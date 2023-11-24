@@ -173,7 +173,7 @@ public class FlightV3 {
 }
 ```
 
-After implementing any of the previous suggested changes, running **"mvn clean compile site"** again will produce a **free-bugs report** like the one below :
+After implementing any of the previously suggested changes, running **"mvn clean compile site"** again will produce a **free-bugs report** like the one below :
 
 ![Capture d’écran 2023-11-18 à 15.53.55.png](https://ucarecdn.com/50f63813-99d6-40c3-b51e-e4148b6451ca/)
 
