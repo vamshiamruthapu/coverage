@@ -88,13 +88,13 @@ Navigate to the following directory and open the file to see the results directl
 
 ![Capture d’écran 2023-11-15 à 18.38.05.png](https://ucarecdn.com/aaacc098-61d5-49ca-8c19-eeba6106a09c/)
 ### 5.3. Fixing some bugs
-The bug [EI_EXPOSE_REP](https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html#malicious-code-vulnerability-malicious-code) is triggered whenever your return a **reference to a mutable** object value stored in one of the object's fields. For this specific case, the returned java.util.Date class is mutable, hence the rule is broken.
+The bug [EI_EXPOSE_REP](https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html#malicious-code-vulnerability-malicious-code) is triggered whenever you return a **reference to a mutable** object value stored in one of the object's fields. For this specific case, the returned java.util.Date class is mutable, hence the rule is broken.
 
 To fix this, we can do any of the following :
 1. Change the setters and getters implementations to use **non mutable** copies of the fields.
 2. Change the field type from java.util.Date to **java.time.LocalDateTime** (which is not mutable)
 
-#### Using clone method
+#### Using the clone method
 Update your class as shown below :
 ```java
 package com.kloudly.spotbugs;
@@ -136,7 +136,7 @@ public class FlightV2 {
     }
 }
 ```
-#### Using java.time.LocalDateTime
+#### Using the java.time.LocalDateTime class
 Update your class as shown below :
 ```java
 package com.kloudly.spotbugs;
@@ -170,7 +170,7 @@ public class FlightV3 {
 }
 ```
 
-After implementing any of the previous suggested change, running **<<mvn clean compile site>>** again will produce a **free-bugs report** like the one below :
+After implementing any of the previous suggested changes, running **"mvn clean compile site"** again will produce a **free-bugs report** like the one below :
 
 ![Capture d’écran 2023-11-18 à 15.53.55.png](https://ucarecdn.com/50f63813-99d6-40c3-b51e-e4148b6451ca/)
 
