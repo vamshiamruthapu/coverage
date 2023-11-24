@@ -87,11 +87,14 @@ Navigate to the following directory and open the file to see the results directl
 ![Capture d’écran 2023-11-18 à 14.48.19.png](https://ucarecdn.com/fa7aaebb-5751-4c46-89cb-ba5657ed6118/)
 
 ![Capture d’écran 2023-11-15 à 18.38.05.png](https://ucarecdn.com/aaacc098-61d5-49ca-8c19-eeba6106a09c/)
+
+From this report, we can see that our Flight class has 4 bugs with **medium priority**.  Next, let's see how to fix those bugs.
+
 ### 5.3. Fixing some bugs
 The bug [EI_EXPOSE_REP](https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html#malicious-code-vulnerability-malicious-code) is triggered whenever you return a **reference to a mutable** object value stored in one of the object's fields. For this specific case, the returned java.util.Date class is mutable, hence the rule is broken.
 
 To fix this, we can do any of the following :
-1. Change the setters and getters implementations to use **non mutable** copies of the fields.
+1. Change the setters and getters implementations to use **non-mutable** copies of the fields.
 2. Change the field type from java.util.Date to **java.time.LocalDateTime** (which is not mutable)
 
 #### Using the clone method
