@@ -61,7 +61,7 @@ Typically, SpotBugs will generate a report in an XML format (target/spotbugsXml.
   </reporting>
 ```
 
-We are using the *"jvmArgs"* option to force to report to be fully displayed in English.
+We are using the *"jvmArgs"* option to force the report to be fully displayed in English.
 
 Because the report is produced during the **maven site goal**, we also need to add the Maven Site plugin to our build.
 ```xml
