@@ -1,9 +1,11 @@
 ## 1. Overview
-In this quick tutorial, we are going to see how to perform bugs detection in a java application using SpotBugs and Maven.
+In this quick tutorial, we will see how to perform bug detection in a Java application using SpotBugs and Maven.
 
-[SpotBugs](https://spotbugs.github.io/) is a program which uses [static analysis](https://en.wikipedia.org/wiki/Static_program_analysis) to look for bugs in Java code. It is a free software, distributed under the terms of the GNU Lesser General Public License. SpotBugs is a fork of [FindBugs](https://findbugs.sourceforge.net/) which is no longer maintained.
+[SpotBugs](https://spotbugs.github.io/) is a program that uses [static analysis](https://en.wikipedia.org/wiki/Static_program_analysis) to look for bugs in Java code. It is free software, distributed under the terms of the GNU Lesser General Public License. SpotBugs is a fork of [FindBugs](https://findbugs.sourceforge.net/) which is no longer maintained.
 
-You need to have at least Java 8 to run SpotBugs, but you can analyze programs written with older versions of Java.
+Spotbugs can be used as a standalone application, as well as through several integrations including Maven, Gradle, Eclipse, and IntelliJ. In this tutorial, we are focusing on Maven integration.
+
+You need at least Java 8 to run SpotBugs, but you can analyze programs written with older versions of Java.
 
 ## 2. Version check
 This tutorial has been tested with the following tools :
@@ -12,7 +14,7 @@ This tutorial has been tested with the following tools :
 - SpotBugs Plugin for Maven 4.8.1.0
 - Maven Site Plugin 4.0.0-M9
 ## 3. Sample Code
-In order to generate a bug report we need some code to work with. For this tutorial, we are using a project with a simple java class Flight shown below :
+To generate a bug report we need some code to work with. For this tutorial, we are using a project with a simple Java class Flight shown below :
 ```java
 package com.kloudly.spotbugs;
 
@@ -41,7 +43,7 @@ public class Flight {
 ```
 
 ## 4. Adding SpotBugs Plugin to Maven
-Typically, SpotBugs will generate a report in a Xml format (target/spotbugsXml.xml). In order to have a prettier report, we need to add the SpotBugs plugin in the reporting phase of maven.
+Typically, SpotBugs will generate a report in an XML format (target/spotbugsXml.xml). To have a prettier report, we need to add the SpotBugs plugin in the reporting phase of Maven.
 
 ```xml
 <reporting>
@@ -59,9 +61,9 @@ Typically, SpotBugs will generate a report in a Xml format (target/spotbugsXml.x
   </reporting>
 ```
 
-We are using the *"jvmArgs"* option to force to report to be fully displayed in English.
+We are using the *"jvmArgs"* option to force the report to be fully displayed in English.
 
-Because the report is produced during the **maven site goal**, we also need to add Maven Site plugin to our build.
+Because the report is produced during the **maven site goal**, we also need to add the Maven Site plugin to our build.
 ```xml
     <build>
         <plugins>
@@ -76,7 +78,7 @@ Because the report is produced during the **maven site goal**, we also need to a
 
 ## 5. Generating the report
 ### 5.1. Running maven site
-Run the following command from the root directory of your project in order to produce the bugs report :
+Run the following command from the root directory of your project to produce the bugs report :
 ```console
 foo@bar:~$ mvn clean compile site
 ```
@@ -85,14 +87,17 @@ Navigate to the following directory and open the file to see the results directl
 ![Capture d’écran 2023-11-18 à 14.48.19.png](https://ucarecdn.com/fa7aaebb-5751-4c46-89cb-ba5657ed6118/)
 
 ![Capture d’écran 2023-11-15 à 18.38.05.png](https://ucarecdn.com/aaacc098-61d5-49ca-8c19-eeba6106a09c/)
+
+From this report, we can see that our Flight class has 4 bugs with **medium priority**.  Next, let's see how to fix those bugs.
+
 ### 5.3. Fixing some bugs
-The bug [EI_EXPOSE_REP](https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html#malicious-code-vulnerability-malicious-code) is triggered whenever your return a **reference to a mutable** object value stored in one of the object's fields. For this specific case, the returned java.util.Date class is mutable, hence the rule is broken.
+The bug [EI_EXPOSE_REP](https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html#malicious-code-vulnerability-malicious-code) is triggered whenever you return a **reference to a mutable** object value stored in one of the object's fields. For this specific case, the returned java.util.Date class is mutable, hence the rule is broken.
 
 To fix this, we can do any of the following :
-1. Change the setters and getters implementations to use **non mutable** copies of the fields.
+1. Change the setters and getters implementations to use **non-mutable** copies of the fields.
 2. Change the field type from java.util.Date to **java.time.LocalDateTime** (which is not mutable)
 
-#### Using clone method
+#### Using the clone method
 Update your class as shown below :
 ```java
 package com.kloudly.spotbugs;
@@ -134,7 +139,7 @@ public class FlightV2 {
     }
 }
 ```
-#### Using java.time.LocalDateTime
+#### Using the java.time.LocalDateTime class
 Update your class as shown below :
 ```java
 package com.kloudly.spotbugs;
@@ -168,7 +173,7 @@ public class FlightV3 {
 }
 ```
 
-After implementing any of the previous suggested change, running **<<mvn clean compile site>>** again will produce a **free-bugs report** like the one below :
+After implementing any of the previously suggested changes, running **"mvn clean compile site"** again will produce a **free-bugs report** like the one below :
 
 ![Capture d’écran 2023-11-18 à 15.53.55.png](https://ucarecdn.com/50f63813-99d6-40c3-b51e-e4148b6451ca/)
 

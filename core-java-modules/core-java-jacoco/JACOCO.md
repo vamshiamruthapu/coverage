@@ -11,9 +11,9 @@ This tutorial has been tested with the following tools :
 - Maven Surefire Plugin 2.22.0
 - JaCoCo Plugin for Maven 0.8.7
 ## 3. Sample Code
-In order to generate a coverage report we need some code to work with.
+To generate a coverage report we need some code to work with.
 ### 3.1. Simple calculator Class
-The code we are going to use in this tutorial is a simple Java class which performs basic mathematical operations. Here is the snippet of the class :
+The code we are going to use in this tutorial is a simple Java class that performs basic mathematical operations. Here is the snippet of the class :
 ``` java
 	//Simple calculator to perform basic mathematical operations
 public class Calculator {
@@ -57,7 +57,7 @@ public class Calculator {
    
 ```
 ### 3.2. Simple calculator Test Class
-Below is the test class associated to the Calculator class. We have just provided few tests cases, so we can highlight the parts of our code which are covered by tests and the parts which are not.
+Below is the test class associated with the Calculator class. We have just provided a few test cases, so we can highlight the parts of our code that are covered by tests and the parts that are not.
 ``` java
 	//Junit test class for Simple calculator
 public class CalculatorTest {
@@ -89,7 +89,7 @@ public class CalculatorTest {
 }   
  ```
 ## 4. Adding JaCoCo Plugin to Maven
-To be able to run the code coverage within a maven project, you need add the JaCoCo maven plugin in the build section of your pom.xml, inside the plugins tag, like shown below.
+To be able to run the code coverage within a maven project, you need to add the JaCoCo maven plugin in the build section of your pom.xml, inside the plugins tag, as shown below.
 ``` xml
 	--Adding jacoco plugin in pom.xml
 <build>
@@ -118,7 +118,7 @@ To be able to run the code coverage within a maven project, you need add the JaC
     </plugins>
 ```
 
-Please, note that in order to execute your unit tests via maven, the **surefire plugin** needs to be declared in your pom.xml as well. If this is not already the case, add the following line in the build section of your pom.xml, inside the plugins tag.
+Please, note that to execute your unit tests via Maven, the **surefire plugin** needs to be declared in your pom.xml as well. If this is not already the case, add the following line in the build section of your pom.xml, inside the plugins tag.
 
 ```xml
         <plugin>
@@ -136,7 +136,7 @@ foo@bar:~$ mvn clean test
 Running the previous command will trigger the **JaCoCo agent** and generate the coverage report in a **binary format** under **target/jacoco.exec**.
 ![Capture d’écran 2023-11-11 à 15.54.40.png](https://ucarecdn.com/0b8581d5-ed2b-46fc-af62-edee3059256d/)
 
-The file can be viewed in a more fashionable way with tools like [SonarQube](https://www.sonarsource.com/).
+The file can be viewed more fashionably with tools like [SonarQube](https://www.sonarsource.com/).
 Fortunately, with the help of the **report goal** of JaCoCo Maven Plugin, we can view the coverage report directly in HTML format.
 ### 5.2. Viewing the result
 Open the following file to see the results directly in a browser : *target/site/jacoco/index.html*
@@ -147,12 +147,12 @@ From here, you may click on the package name to have the detailed coverage per c
 ![Capture d’écran 2023-11-11 à 14.12.51.png](https://ucarecdn.com/4ecdd9f3-0870-4112-97f2-513504c09e74/)
 
 Below is the legend to better understand this image :
-- **Green** : Code is covered by a test
-- **Red** : Code is not covered by any test
-- **Yellow** : Code is partially covered by test
+- **Green**: Code is covered by a test
+- **Red**: Code is not covered by any test
+- **Yellow**: Code is partially covered by a test
 
 ### 5.3. Adding more tests
-Let's add few more tests cases to achieve **100% coverage**. Add the following tests cases in the CalculatorTest class:
+Let's add a few more test cases to achieve **100% coverage**. Add the following test cases in the CalculatorTest class:
 ```java
 public class CalculatorTest {
     //.....
