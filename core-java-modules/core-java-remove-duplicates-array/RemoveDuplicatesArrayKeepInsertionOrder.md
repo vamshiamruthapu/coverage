@@ -1,5 +1,6 @@
 5 Effective Methods to Remove Array Duplicates while Preserving Original Order
 ==============================================================================
+
 # 1. Overview
 Very recently during a coding game, I faced two exercises for which it was necessary to filter an array to remove duplicates while retaining the initial order of the elements. One of the arrays contained integers and the other contained strings. I had to think momentarily before finding the solution to this fairly common problem. So I thought it would be interesting to share my experience to help anyone who might find themselves in a similar situation.
 
