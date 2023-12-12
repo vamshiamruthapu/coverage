@@ -1,3 +1,5 @@
+5 Effective Methods to Remove Array Duplicates while Preserving Original Order
+==============================================================================
 # 1. Overview
 Very recently during a coding game, I faced two exercises for which it was necessary to filter an array to remove duplicates while retaining the initial order of the elements. One of the arrays contained integers and the other contained strings. I had to think momentarily before finding the solution to this fairly common problem. So I thought it would be interesting to share my experience to help anyone who might find themselves in a similar situation.
 
@@ -25,7 +27,7 @@ This tutorial has been tested with the following tools :
 ```java
     /**
      *
-     * @param data : The input array. The array doesn't need to be sorted
+     * @param data: The input array. The array doesn't need to be sorted
      * @return an array where duplicate values have been removed. The insertion
      * order in the final array must be the same as in the input array
      */
@@ -87,7 +89,7 @@ To remove duplicates using a LinkedHashSet, we can iterate through the original 
 ```java
     /**
      *
-     * @param data : The input array. The array doesn't need to be sorted
+     * @param data: The input array. The array doesn't need to be sorted
      * @return an array where duplicate values have been removed. The insertion
      * order in the final array must be the same as in the input array
      */
@@ -142,7 +144,7 @@ To remove duplicates using a LinkedHashSet, we can iterate through the original 
 # 5. Method 3: Using a Map
 Using a [Map](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html) is a popular approach to remove duplicates from an unsorted array while maintaining the order of elements. A Map data structure allows us to store unique elements as keys.
 
-To implement this method, we can iterate through the array and add each element as a key to the map. The value associated to the key doesn't really matter. Our only concern here is that the keys are distinct from each other.
+To implement this method, we can iterate through the array and add each element as a key to the map. The value associated with the key doesn't really matter. Our only concern here is that the keys are distinct from each other.
 
 After iterating through the entire array, we can extract the deduplicated elements by retrieving only the keys from the map. Because we also want the original order of elements to be preserved, we should carefully choose the implementation of Map to use. Hopefully, [LinkedHashMap](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html) is the ideal candidate for our use case.
 
@@ -150,7 +152,7 @@ After iterating through the entire array, we can extract the deduplicated elemen
 ```java
     /**
      *
-     * @param data : The input array. The array doesn't need to be sorted
+     * @param data: The input array. The array doesn't need to be sorted
      * @return an array where duplicate values have been removed. The insertion
      * order in the final array must be the same as in the input array
      */
@@ -215,7 +217,7 @@ Finally, we can convert the Stream back into an array using the `toArray()` meth
 ```java
     /**
      *
-     * @param data : The input array. The array doesn't need to be sorted
+     * @param data: The input array. The array doesn't need to be sorted
      * @return an array where duplicate values have been removed. The insertion
      * order in the final array must be the same as in the input array
      */
@@ -265,7 +267,7 @@ To achieve in-place removal, we can utilize nested loops to compare each element
 ```java
     /**
      *
-     * @param data : The input array. The array doesn't need to be sorted
+     * @param data: The input array. The array doesn't need to be sorted
      * @return an array where duplicate values have been removed. The insertion
      * order in the final array must be the same as in the input array
      */
