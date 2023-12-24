@@ -1,11 +1,11 @@
 5 Steps to Integrate Maven with SonarQube for Effective Quality Assurance
 =========================================================================
 # Overview
-It has been statistically proven that, as software developers, we spend 80% of our time reading code and only 20% of our time writing it.  So it's important that during that 20% of our time, we write code that will make our lives easier during the 80% of the time we have to maintain it. So you'll be hearing more and more about clean code.
+It has been statistically proven that, as software developers, we spend 80% of our time reading code and only 20% of our time writing it.  So it's important that during that 20% of our time, we write code that will make our lives easier during the 80% of the time we have to maintain it. So you'll be hearing more and more about **clean code**.
 
-The term clean code can have several definitions depending on the author, but the one that comes up most often is the following: [Clean Code](https://www.sonarsource.com/solutions/clean-code/#:~:text=Clean%20Code%20is%20code%20that's,value%20out%20of%20your%20software.) is code that's easy to read, maintain, understand and change through structure and consistency yet remains robust and secure to withstand performance demands.
+The term **clean code** can have several definitions depending on the author, but the one that comes up most often is the following: [Clean Code](https://www.sonarsource.com/solutions/clean-code/#:~:text=Clean%20Code%20is%20code%20that's,value%20out%20of%20your%20software.) is code that's easy to **read**, **maintain**, **understand** and **change** through structure and consistency yet remains robust and secure to withstand performance demands.
 
-So you guessed it, in this article, we will be talking about Clean Code. We'll be looking at one of the most popular tools on the market on the subject, SonarQube. We'll look at integrating SonarQube into a Maven project to generate code quality metrics. Ready to explore further? Let's get started!
+So you guessed it, in this article, we will be talking about Clean Code. We'll be looking at one of the most popular tools on the market on the subject, **SonarQube**. We'll look at integrating **SonarQube** into a **Maven** project to generate code **quality metrics**. Ready to explore further? Let's get started!
 
 # Version Check
 This tutorial has been tested with the following tools :
@@ -53,10 +53,10 @@ After a few seconds, depending on your project size, you'll have an output like 
 Moving back to your Sonar Dashboard, you'll see the analysis report.
 ![Capture d’écran 2023-12-22 à 20.07.28.png](https://ucarecdn.com/295e3f0d-cede-483d-b77c-1f5e1315f578/).
 
-This screen gives you an overview of the quality of your code. The metrics are grouped into several categories: Reliability, Security, Security review, Coverage, Maintainability, and Duplications. In the next article, we'll take a look at each of these categories and see how to correct some of the vulnerabilities.
+This screen gives you an overview of the quality of your code. The metrics are grouped into several categories: **Reliability, Security, Security review, Coverage, Maintainability, and Duplications**. In the next article, we'll take a look at each of these categories and see how to correct some of the vulnerabilities.
 
 # Conclusion
-In this article, we look at integrating SonarQube into a Maven project to perform static code analysis. If you would like to use the SonarQube tool in more depth, please consult the [official documentation](https://docs.sonarsource.com/sonarqube/latest/).
+In this article, we look at integrating **SonarQube** into a **Maven** project to perform **static code analysis**. If you would like to use the SonarQube tool in more depth, please consult the [official documentation](https://docs.sonarsource.com/sonarqube/latest/).
 
 In a future article, we'll look at how to automatically launch a Sonar analysis from a continuous integration pipeline, using a tool like Jenkins. 
 
