@@ -1,3 +1,6 @@
+5 Effective Methods to Remove Array Duplicates while Preserving Original Order
+==============================================================================
+
 # 1. Overview
 Very recently during a coding game, I faced two exercises for which it was necessary to filter an array to remove duplicates while retaining the initial order of the elements. One of the arrays contained integers and the other contained strings. I had to think momentarily before finding the solution to this fairly common problem. So I thought it would be interesting to share my experience to help anyone who might find themselves in a similar situation.
 
@@ -25,7 +28,7 @@ This tutorial has been tested with the following tools :
 ```java
     /**
      *
-     * @param data : The input array. The array doesn't need to be sorted
+     * @param data: The input array. The array doesn't need to be sorted
      * @return an array where duplicate values have been removed. The insertion
      * order in the final array must be the same as in the input array
      */
@@ -77,6 +80,9 @@ This tutorial has been tested with the following tools :
 ```
 
 ![Capture d’écran 2023-12-12 à 11.47.39.png](https://ucarecdn.com/45346869-9c56-4709-baaa-82f598bb7171/)
+## Complexity analysis
+- **Time complexity**: O(n²) - nested loop to compare each element with others.
+- **Space complexity**: O(n) - additional space required for the ArrayList.
 
 # 4. Method 2: Using a Set
 Another effective approach to remove duplicates from an array in Java while preserving the order of elements is by utilizing a [Set](https://docs.oracle.com/javase/8/docs/api/java/util/Set.html). Sets in Java, such as HashSet or LinkedHashSet, are data structures that do not allow duplicate elements. Since we want to preserve the order of the elements in the initial array, we need to use a structure that preserves this order. [LinkedHashSet](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashSet.html) is the perfect candidate here.
@@ -87,7 +93,7 @@ To remove duplicates using a LinkedHashSet, we can iterate through the original 
 ```java
     /**
      *
-     * @param data : The input array. The array doesn't need to be sorted
+     * @param data: The input array. The array doesn't need to be sorted
      * @return an array where duplicate values have been removed. The insertion
      * order in the final array must be the same as in the input array
      */
@@ -138,11 +144,14 @@ To remove duplicates using a LinkedHashSet, we can iterate through the original 
     }
 ```
 ![Capture d’écran 2023-12-12 à 12.04.35.png](https://ucarecdn.com/0120488a-f8af-4c9a-bdfc-b40fa8e6694f/)
+## Complexity analysis
+- **Time complexity**: O(n) - Set ensures uniqueness..
+- **Space complexity**: O(n) - additional space required for the Set.
 
 # 5. Method 3: Using a Map
 Using a [Map](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html) is a popular approach to remove duplicates from an unsorted array while maintaining the order of elements. A Map data structure allows us to store unique elements as keys.
 
-To implement this method, we can iterate through the array and add each element as a key to the map. The value associated to the key doesn't really matter. Our only concern here is that the keys are distinct from each other.
+To implement this method, we can iterate through the array and add each element as a key to the map. The value associated with the key doesn't really matter. Our only concern here is that the keys are distinct from each other.
 
 After iterating through the entire array, we can extract the deduplicated elements by retrieving only the keys from the map. Because we also want the original order of elements to be preserved, we should carefully choose the implementation of Map to use. Hopefully, [LinkedHashMap](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html) is the ideal candidate for our use case.
 
@@ -150,7 +159,7 @@ After iterating through the entire array, we can extract the deduplicated elemen
 ```java
     /**
      *
-     * @param data : The input array. The array doesn't need to be sorted
+     * @param data: The input array. The array doesn't need to be sorted
      * @return an array where duplicate values have been removed. The insertion
      * order in the final array must be the same as in the input array
      */
@@ -201,6 +210,9 @@ After iterating through the entire array, we can extract the deduplicated elemen
     }
 ```
 ![Capture d’écran 2023-12-12 à 14.04.50.png](https://ucarecdn.com/a6ade8aa-fe33-4ad2-bdcc-954a09445f61/)
+## Complexity analysis
+- **Time complexity**: O(n) - Map ensures uniqueness..
+- **Space complexity**: O(n) - additional space required for the Map.
 
 # 6. Method 4: Using Stream API
 Java 8 introduced the [Stream](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html) API, which provides an elegant way to process collections of data. We can leverage Streams to remove duplicates from an unsorted array while maintaining the order of elements.
@@ -215,7 +227,7 @@ Finally, we can convert the Stream back into an array using the `toArray()` meth
 ```java
     /**
      *
-     * @param data : The input array. The array doesn't need to be sorted
+     * @param data: The input array. The array doesn't need to be sorted
      * @return an array where duplicate values have been removed. The insertion
      * order in the final array must be the same as in the input array
      */
@@ -256,6 +268,9 @@ Finally, we can convert the Stream back into an array using the `toArray()` meth
     }
 ```
 ![Capture d’écran 2023-12-12 à 14.06.02.png](https://ucarecdn.com/8ba2d707-8e20-4c47-879d-a0746583afa3/)
+## Complexity analysis
+- **Time complexity**: O(n) - stream.distinct() uses a Set to check for uniqueness.
+- **Space complexity**: O(n) - Additional space is used to store unique elements before converting them to an array.
 
 # 7. Method 5: In-place removal
 In some scenarios, we may need to remove duplicates from an unsorted array without using any auxiliary data structure. This approach, known as in-place removal, allows us to modify the original array directly while preserving the order of elements.
@@ -265,7 +280,7 @@ To achieve in-place removal, we can utilize nested loops to compare each element
 ```java
     /**
      *
-     * @param data : The input array. The array doesn't need to be sorted
+     * @param data: The input array. The array doesn't need to be sorted
      * @return an array where duplicate values have been removed. The insertion
      * order in the final array must be the same as in the input array
      */
@@ -321,6 +336,9 @@ To achieve in-place removal, we can utilize nested loops to compare each element
     }
 ```
 ![Capture d’écran 2023-12-12 à 12.22.59.png](https://ucarecdn.com/799e41d3-2780-4cbb-948f-3324f9703b7a/)
+## Complexity analysis
+- **Time complexity**: O(n²) - nested loop to compare each element with others
+- **Space complexity**: O(1) - no auxiliary space is needed.
 
 # 8. Conclusion
 To sum up, we have explored five different methods for removing duplicates from an unsorted array in Java: ArrayList, Set, Map, Stream API, and in-place removal without auxiliary data structures. Each method offers its advantages and considerations based on factors such as efficiency, simplicity, and memory usage.
