@@ -11,19 +11,20 @@ This tutorial has been tested with the following tools :
 - Spring boot 3.2.1
 
 ## About the project
-We assume we have a product entity with the following attributes: id, name, and price. We are going to expose two endpoints: one to retrieve all the products from our repository and another one to find a product by its id. For the sake of simplicity, all our data will be stored in memory. The project will be implemented using the Repository pattern (Controller - Service - Repository). We’ll not spend much time on Service and Repository layers, but rather on the Controller layer. Let’s start!
+We assume we have a product entity with the following attributes: id, name, and price. We are going to expose two endpoints: one to retrieve all the products from our repository and another one to find a product by its ID. In the nominal scenario, both APIs must return an HTTP Code 200 (OK). When a search for a product by its ID produces no results, the return code should be HTTP 404 (NOT FOUND). For the sake of simplicity, all our data will be stored in memory. The project will be implemented using the Repository pattern (Controller - Service - Repository). We’ll not spend much time on the Service and Repository layers, but rather on the Controller layer. Let’s start!
 
-## Step 1 : Generate a template project.
-We’ll use spring initializr to generate the squeleton of our project. Navigate to initializer website and select the following options:
+## Step 1: Generate a template project.
+We’ll use Spring [initializr](https://start.spring.io/) to generate the skeleton of our project. Navigate to Spring [initializr](https://start.spring.io/) website and select the following options:
 - **Project**: Maven
 - **Language**: Java
 - **Spring Boot**: 3.2.1
 
 Complete the project metadata section as shown in the image below :
-![Capture d’écran 2023-12-26 à 10.44.51.png](https://ucarecdn.com/582464c7-4b5c-47b6-9eb2-13545233702e/)
-Once everything is filled up, generate the project and import it in your favourite IDE.
 
-## Step 2 : Create the repository layer
+![Capture d’écran 2023-12-26 à 10.44.51.png](https://ucarecdn.com/582464c7-4b5c-47b6-9eb2-13545233702e/)
+Once everything is filled up, generate the project and import it into your favorite IDE.
+
+## Step 2: Create the repository layer
 Create a Product class with the snippet code below.
 ```java
 package com.kloudly.springbootrest.dao;
@@ -117,9 +118,9 @@ public class ProductRepository {
     }
 }
 ```
-**Explanation**: Since we are focusing in this tutorial on the Controller layer, the repository layer is managed by in-memory data. We use the stream API to implement the ```findById``` method. Some fake products are injected in the constructor for testing purposes.
+**Explanation**: Since we are focusing in this tutorial on the Controller layer, the repository layer is managed by in-memory data. We use the stream API to implement the ```findById``` method. Some fake products are injected into the constructor for testing purposes.
 
-## Step 3 : Create the service layer.
+## Step 3: Create the service layer.
 
 Create a ProductService class with the code below.
 ```java
@@ -147,21 +148,21 @@ public class ProductService {
     }
 }
 ```
-The service layer is straight forward, just delegating calls to the repository layer with no additional work.
+The service layer is straightforward, just delegating calls to the repository layer with no additional work.
 
-## Step 4 : Create the controller layer.
+## Step 4: Create the controller layer.
 Start by creating a simple ProductController class.
 
 ### RestController
 Add ```@Restcontroller``` on top of the class to turn it into a Restful controller.
 
-Add ```@RequestMapping``` to provide a base path for your endpoints. Note that any URI you specify here, applies to all the methods within the class. Let’s use “/products” as our URI.
+Add ```@RequestMapping``` to provide a base path for your endpoints. Note that any URI you specify here applies to all the methods within the class. Let’s use “/products” as our URI.
 
 ### Retrieving all products Endpoint
 Create a method named ```findAll``` in your class.
-Add the ```@GetMapping``` annotation to make it listen to GET calls. This annotation can accept many parameters among which we have "produces". This parameter accept a string representing the Mime-type. It's important to know that by default Spring Boot will produce an output in JSON format. Just to simplify the understanding, let's use the parameter anyway : ```@GetMapping(produces = "application/json")```
+Add the ```@GetMapping``` annotation to make it listen to GET calls. This annotation can accept many parameters among which we have "produces". This parameter accepts a string representing the Mime type. It's important to know that by default Spring Boot will produce an output in JSON format. Just to simplify the understanding, let's use the parameter anyway: ```@GetMapping(produces = "application/json")```
 
-Finally we use ResponseEntity to customise the status code. [ResponseEntity](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/ResponseEntity.html) in Spring Framework is a Generic Class which represents the whole HTTP response. It can be use to customize the HTTP Status Code, the header and the body. We'll be using it here to customize the Status Code of the response.
+Finally, we use ResponseEntity to customize the status code. [ResponseEntity](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/ResponseEntity.html) in Spring Framework is a Generic Class which represents the whole HTTP response. It can be used to customize the HTTP Status Code, the header, and the body. We'll be using it here to customize the Status Code of the response.
 ```java
 	@GetMapping(produces = "application/json")
     public ResponseEntity<List<Product>> findAll(){
@@ -172,9 +173,9 @@ Finally we use ResponseEntity to customise the status code. [ResponseEntity](htt
 
 ### Retrieving a specific product Endpoint
 Create a method named ```findById``` in your class.
-Add the ```@GetMapping``` annotation to make it listen to GET calls. Since we’ll be accepting an input from the user. We can either accept it as part of the URL or as a GET parameter. To comply with [REST best practices](https://swagger.io/resources/articles/best-practices-in-api-design/), we will accept the id as part of the URL. We must then append ```{id}``` to the @GetMapping and add ```@PathVariable(“id”)``` to our method signature. As seen before, we'll add the ```produces``` parameter to the GetMapping annotation to specify the content type.
+Add the ```@GetMapping``` annotation to make it listen to GET calls. Since we’ll be accepting input from the user. We can either accept it as part of the URL or as a GET parameter. To comply with [REST best practices](https://swagger.io/resources/articles/best-practices-in-api-design/), we will accept the ID as part of the URL. We must then append ```{id}``` to the @GetMapping and add ```@PathVariable(“id”)``` to our method signature. As seen before, we'll add the ```produces``` parameter to the GetMapping annotation to specify the content type.
 
-Finally we use ResponseEntity to customise the response status code.
+Finally, we use ResponseEntity to customize the response status code.
 
 Here is the full code of our ProductController class.
 ```java
@@ -212,7 +213,7 @@ public class ProductController {
     }
 }
 ```
-**Explanation** : The ```findAll``` method explanation is straight forward. About ```findById```, we should note that the service layer is returning an optional. So we have to use the ```map``` method to handle situations where the id does not exist, so we can set the status code to 404.
+**Explanation** : The ```findAll``` method explanation is straightforward. About ```findById```, we should note that the service layer is returning an optional. So we have to use the ```map``` method to handle situations where the id does not exist, so we can set the status code to 404.
 
 ## Testing
 We are using [Postman](https://www.postman.com/downloads/) for this example, but you may use any other API tester tool that suits your needs.
@@ -222,11 +223,11 @@ We are using [Postman](https://www.postman.com/downloads/) for this example, but
 **Retrieve a specific product**
 ![Capture d’écran 2023-12-27 à 12.01.02.png](https://ucarecdn.com/270f457d-c57d-40d0-b4b4-e81841fe5a36/)
 
-**Retrieve non existing product**
+**Retrieve non-existing product**
 ![Capture d’écran 2023-12-26 à 10.46.45.jpg](https://ucarecdn.com/2e503a7c-0f28-4cb2-90c6-b7d8e221b70f/)
 
 ## Conclusion
-In this quick tutorial, we’ve seen how to build a Rest Get endpoint producing JSON and returning custom HTTP Status Code. In a next article, we shall be focusing on other endpoints types : PUT, POST, DELETE.
+In this quick tutorial, we’ve seen how to build a Rest Get endpoint producing JSON and returning a custom HTTP Status Code. In the next articles, we shall be focusing on other endpoint types: PUT, POST, and DELETE.
 
 Did you find this blog post useful? Feel free to drop a thumbs up or comment.
 
