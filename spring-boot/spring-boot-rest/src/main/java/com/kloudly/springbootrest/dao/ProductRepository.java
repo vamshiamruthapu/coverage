@@ -3,6 +3,7 @@ package com.kloudly.springbootrest.dao;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProductRepository {
-    private final List<Product> products;
+    private List<Product> products;
 
     public ProductRepository(){
         this.products = buildFakeProducts();
@@ -38,7 +39,13 @@ public class ProductRepository {
         p5.setName("Video Game Controller");
         p5.setPrice(39.94);
 
-        return List.of(p1,p2,p3,p4,p5);
+        List<Product> fakeProducts = new ArrayList<>();
+        fakeProducts.add(p1);
+        fakeProducts.add(p2);
+        fakeProducts.add(p3);
+        fakeProducts.add(p4);
+        fakeProducts.add(p5);
+        return fakeProducts;
     }
     public List<Product> findAll(){
         return this.products;
@@ -51,5 +58,35 @@ public class ProductRepository {
             ret = Optional.of(filteredProducts.get(0));
         }
         return ret;
+    }
+
+    public Product add(Product product){
+        Long maxId = findMaxId();
+        product.setId(maxId + 1);
+        this.products.add(product);
+        return product;
+    }
+
+    public Product update(Product product){
+        int index = this.indexOf(product);
+        this.products.set(index, product);
+        return product;
+    }
+
+    public void delete(Product product){
+        int index = this.indexOf(product);
+        this.products.remove(index);
+    }
+    private Long findMaxId() {
+        return this.products.stream().map(Product::getId).reduce(Long::max).orElse(0L);
+    }
+    private int indexOf(Product product) {
+        int index = 0;
+        for (Product p:this.products) {
+            if(Objects.equals(product.getId(), p.getId()))
+                return index;
+            index++;
+        }
+        return -1;
     }
 }

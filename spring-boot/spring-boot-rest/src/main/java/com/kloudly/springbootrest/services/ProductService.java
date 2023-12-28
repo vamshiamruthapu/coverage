@@ -20,4 +20,16 @@ public class ProductService {
     public Optional<Product> findById(Long id){
         return productRepository.findById(id);
     }
+
+    public Product add(Product product){
+        return this.productRepository.add(product);
+    }
+
+    public Product update(Product product){
+        return this.productRepository.update(product);
+    }
+
+    public void delete(Product product){
+        this.productRepository.delete(product);
+    }
 }
