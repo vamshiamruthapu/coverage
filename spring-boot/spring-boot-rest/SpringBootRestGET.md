@@ -1,16 +1,16 @@
 Creating GET Endpoints with Spring Boot: A Quick Guide
 ======================================================
 ## Overview
-Introducing readers to the process of building a **RESTful endpoint** using Spring Boot can open up a world of possibilities for creating robust and scalable web services. This article will guide you through the essential steps and best practices for implementing a RESTful endpoint in your Spring Boot application.
+Introducing readers to the process of building a RESTful endpoint using Spring Boot can open up a world of possibilities for creating robust and scalable web services. This article will guide you through the essential steps and best practices for implementing a RESTful endpoint in your Spring Boot application.
 
-This article is part of a **series** of 4 articles on implementing REST web services with Spring Boot. This article focuses exclusively on **GET** endpoints. The other articles deal with other types of endpoints, more specifically endpoints of type: POST, PUT, and DELETE.
+This article is part of a series of 4 articles on implementing REST web services with Spring Boot. This article focuses exclusively on **GET** endpoints. The other articles deal with other types of endpoints, more specifically endpoints of type: POST, PUT, and DELETE.
 ## Version check
 This tutorial has been tested with the following tools :
 - Java 17
 - Spring boot 3.2.1
 
 ## About the project
-We assume we have a product entity with the following attributes: id, name, and price. We are going to expose two endpoints: one to retrieve all the products from our repository and another one to find a product by its ID. In the nominal scenario, both APIs must return an HTTP Code **200 (OK)**. When a search for a product by its ID produces no results, the return code should be HTTP **404 (NOT FOUND)**. For the sake of simplicity, all our data will be stored in memory. The project will be implemented using the Repository pattern (Controller - Service - Repository). We’ll not spend much time on the Service and Repository layers, but rather on the Controller layer. Let’s start!
+We assume we have a product entity with the following attributes: id, name, and price. We are going to expose two endpoints: one to retrieve all the products from our repository and another one to find a product by its ID. In the nominal scenario, both APIs must return an HTTP Code 200 (OK). When a search for a product by its ID produces no results, the return code should be HTTP 404 (NOT FOUND). For the sake of simplicity, all our data will be stored in memory. The project will be implemented using the Repository pattern (Controller - Service - Repository). We’ll not spend much time on the Service and Repository layers, but rather on the Controller layer. Let’s start!
 
 ## Step 1: Generate a template project.
 We’ll use Spring [initializr](https://start.spring.io/) to generate the skeleton of our project. Navigate to Spring [initializr](https://start.spring.io/) website and select the following options:
@@ -226,7 +226,7 @@ We are using [Postman](https://www.postman.com/downloads/) for this example, but
 ![Capture d’écran 2023-12-26 à 10.46.45.jpg](https://ucarecdn.com/2e503a7c-0f28-4cb2-90c6-b7d8e221b70f/)
 
 ## Conclusion
-In this quick tutorial, we’ve seen how to build a **REST GET endpoint** producing JSON and returning a custom HTTP Status Code. In the next articles, we shall be focusing on other endpoint types: PUT, POST, and DELETE.
+In this quick tutorial, we’ve seen how to build a REST GET endpoint producing JSON and returning a custom HTTP Status Code. In the next articles, we shall be focusing on other endpoint types: PUT, POST, and DELETE.
 
 Did you find this blog post useful? Feel free to drop a thumbs up or comment. If you've had any difficulty completing this tutorial, leave me a comment and I'll be happy to help.
 
