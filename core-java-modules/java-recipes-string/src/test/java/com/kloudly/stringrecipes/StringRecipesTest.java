@@ -1,12 +1,21 @@
 package com.kloudly.stringrecipes;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringRecipesTest {
+    private static StringRecipes bean;
+
+    @BeforeAll
+    static void setUp(){
+        bean = new StringRecipes();
+    }
 
     @Test
     void testReplaceWhiteSpaceWithTrim(){
@@ -119,5 +128,95 @@ public class StringRecipesTest {
         //Then
         assertTrue(containsLetterL);
         assertFalse(containsDigit);
+    }
+
+    @Test
+    void testIsPalindrome(){
+        //Given
+        String palindrome = "level";
+        String notPalindrome = "levels";
+        //When
+        boolean result1 = bean.isPalindrome(palindrome);
+        boolean result2 = bean.isPalindrome(notPalindrome);
+        //Then
+        assertTrue(result1);
+        assertFalse(result2);
+    }
+
+    @Test
+    void testSwitchCharToUpperCase(){
+        //Given
+        String simple = "Hello world!";
+        //When
+        String result = bean.switchCharacterToUpperCase(simple,'o');
+        //Then
+        assertEquals("HellO wOrld!",result);
+
+    }
+
+    @Test
+    void testContainsOnlyDigitsLoop(){
+        //Given
+        String validNumber = "12345";
+        String invalidNumber = "1234a";
+        //When
+        boolean result1 = bean.containsOnlyDigitsLoop(validNumber);
+        boolean result2 = bean.containsOnlyDigitsLoop(invalidNumber);
+        //Then
+        assertTrue(result1);
+        assertFalse(result2);
+    }
+
+    @Test
+    void testContainsOnlyDigitsStream(){
+        //Given
+        String validNumber = "12345";
+        String invalidNumber = "1234a";
+        //When
+        boolean result1 = bean.containsOnlyDigitsStream(validNumber);
+        boolean result2 = bean.containsOnlyDigitsStream(invalidNumber);
+        //Then
+        assertTrue(result1);
+        assertFalse(result2);
+    }
+
+    @Test
+    void testChristmasTree(){
+        //Given
+        int length = 11;
+        //When
+        String tree = bean.buildChristmasTree(length);
+        //Then
+        System.out.println(tree);
+    }
+    @Test
+    void testAddLineNumbers(){
+        //Given
+        String input = """
+                Java is an awesome programming language
+                Python is a fabulous programming language
+                PHP is another awesome programming language
+                """;
+        //When
+        List<String> result = bean.addLineNumbers(input);
+        //Then
+        result.forEach(System.out::println);
+    }
+
+    @Test
+    void testJoiningStrings(){
+        //Given
+        String[] input = {"John", "Doe", "30", "Software Engineer"};
+        String expected = "John,Doe,30,Software Engineer";
+        //When
+        String result1 = bean.joinWithStringBuilder(input);
+        String result2 = bean.joinWithStringJoin(input);
+        String result3 = bean.joinWithStringJoiner(input);
+        String result4 = bean.joinWithStream(input);
+        //Then
+        assertEquals(expected,result1);
+        assertEquals(expected,result2);
+        assertEquals(expected,result3);
+        assertEquals(expected,result4);
     }
 }
