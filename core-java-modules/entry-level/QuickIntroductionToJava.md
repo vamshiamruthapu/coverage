@@ -6,14 +6,14 @@ According to the [TIOBE index of 2024](https://www.tiobe.com/tiobe-index/), it i
 Why have so many companies adopted Java over the years? In this article, we'll delve into the **Java Essentials**, exploring the language's strengths.
 
 ## 1 - A High-level Programming Language
-Java is a [high-level](https://en.wikipedia.org/wiki/High-level_programming_language) programming language. This means that when you write a program in Java, you don't have to worry about low-level details like memory management, register management and so on.  
+Java is a [high-level](https://en.wikipedia.org/wiki/High-level_programming_language) programming language. This means that when you write a program in Java, you don't have to worry about low-level details like memory management, register management, etc.  
 The developer who programs in Java doesn't need to have any knowledge of the hardware (CPU, RAM) on which his program will be run. All this makes a Java program simpler to write and easier to understand.  
 This is not the case with low-level languages such as C or Assembly.
 
 ## 2 - Write Once, Run Anywhere
-Java is a programming language that is both compiled and interpreted. 
-Java is compiled because its source code is transformed into [byte-code](https://en.wikipedia.org/wiki/Java_bytecode) during the compilation phase. 
-The byte-code is then interpreted by the virtual machine (JVM) during the execution phase. 
+Java is a programming language that is both compiled and interpreted.
+Java is compiled because its source code is transformed into [byte-code](https://en.wikipedia.org/wiki/Java_bytecode) during the compilation phase.
+The byte-code is then interpreted by the virtual machine (JVM) during the execution phase.
 Java owes its portability to the use of the JVM. Indeed, any environment (Windows, Linux, macOS, cell phone, Web browser) with a Java virtual machine is capable of executing a compiled Java program.  
 This portability is the origin of the slogan: [Write Once, Run Anywhere](https://en.wikipedia.org/wiki/Write_once,_run_anywhere).
 
@@ -24,14 +24,14 @@ An object is thus characterized by its properties and behaviors. Properties corr
 The advantages of OOP over other programming paradigms include **code modularity**, ease of **maintenance** and **reusability**.
 
 ## 4 - Robustness and Security
-In computer science, [robustness](https://en.wikipedia.org/wiki/Robustness_(computer_science)) is the ability of a computer system to cope with errors during execution and cope with erroneous input.
+In computer science, [robustness](https://en.wikipedia.org/wiki/Robustness_(computer_science)) is the ability of a computer system to cope with errors during execution and with erroneous input.
 The robustness of the Java language is guaranteed by the following mechanisms:
-### Memory management 
+### Memory management
 Memory management is undoubtedly the most important pillar of the Java language's robustness. Thanks to automatic memory management via the Garbage Collector, Java programs are less prone to memory leaks.
 ### Exception handling
-Java has an advanced exception handling mechanism. An [exception](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) is an event that occurs during program execution and prevents the program from continuing normally. 
+Java has an advanced exception-handling mechanism. An [exception](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) is an event that occurs during program execution and prevents the program from continuing normally.
 In Java, when an exception is raised, the developer has the option of either handling it (try-catch) or propagating it (throws) to a higher level. This helps in writing more reliable and fault-tolerant code.
-### Strong Type checking
+### Strong Type Checking
 Java is a statically-typed language, meaning that variable types are explicitly declared during compilation. This helps catch type-related errors at compile-time, enhancing code robustness
 ### Security
 Java is well known for its robust [security mechanisms](https://www.oracle.com/java/technologies/security-in-java.html#:~:text=The%20bytecode%20verifier%20acts%20as,has%20passed%20the%20verifier's%20tests.), which were an integral part of its design.
@@ -46,7 +46,7 @@ Java has a set of libraries that facilitate the implementation of multithreaded 
 
 ## 6 - High Performance
 As mentioned above, Java applications run on a virtual machine (JVM), a layer of abstraction between byte-code and hardware architecture.  
-One might be tempted to think that this would have a significant impact on performance. 
+One might be tempted to think that this would have a significant impact on performance.
 However, thanks to concepts such as [Just In Time Compilation (JIT)](https://en.wikipedia.org/wiki/Just-in-time_compilation) and optimized memory management, including [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)), Java applications approach the performance of native applications.
 
 ## 7 - Strong Community and Resources
