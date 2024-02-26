@@ -16,7 +16,7 @@ pipeline {
                 sh """
                     cd core-java-modules/core-java-jacoco
                     mvn clean package
-                    mvn sonar:sonar -Dsonar.projectName=coverage-project1 -Dsonar.projectKey=coverage-project1 -Dsonar.host.url=http://44.211.156.146:9000 -Dsonar.login=squ_9aa9fddb92d8a746eadebb8669ec80db4c3a627e -Dsonar.language=java -Dsonar.java.binaries=*/target/classes -Dsonar.sources=. -Dsonar.projectBaseDir=. -Dsonar.coverage.jacoco.xmlReportPaths=*/target/site/jacoco/jacoco.xml
+                    mvn sonar:sonar -Dsonar.projectName=coverage-project1 -Dsonar.projectKey=coverage-project1 -Dsonar.host.url=http://44.211.156.146:9000 -Dsonar.login=squ_9aa9fddb92d8a746eadebb8669ec80db4c3a627e -Dsonar.language=java -Dsonar.java.binaries=*/target/classes -Dsonar.coverage.jacoco.xmlReportPaths=*/target/site/jacoco/jacoco.xml
                 """    
             }
         }
